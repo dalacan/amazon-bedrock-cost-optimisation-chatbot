@@ -1,7 +1,7 @@
 {
     "knowledge_base_enabled": false,
     "knowledge_base_id": "",
-    "model_id": "anthropic.claude-3-haiku-20240307-v1:0",
+    "model_id": "anthropic.claude-3-sonnet-20240229-v1:0",
     "cur_report_filename": "./sample/cost-sample.csv",
     "max_records": 2000
 }

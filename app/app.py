@@ -14,7 +14,7 @@ def extract_between_tags(tag: str, string: str, strip: bool = False) -> list[str
 # Add title on the page
 st.title("Gen AI Cost Optimisation App")
 
-json_config_file = open('config-test.json')
+json_config_file = open('config.json')
 configs = json.load(json_config_file)
 
 # Create the large language model object

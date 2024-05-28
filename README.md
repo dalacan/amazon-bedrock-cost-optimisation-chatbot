@@ -27,7 +27,11 @@ cd amazon-bedrock-cost-optimisation-chatbot/app
 2. In the terminal, install the dependencies by running the following:
 
 ```
-!pip install --no-cache-dir -r requirements.txt
+pip install --no-cache-dir -r requirements.txt
+```
+3. Install required package to run streamlit
+```
+sh setup.sh
 ```
 
 ### Step 2: Run your app
