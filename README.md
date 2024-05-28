@@ -55,6 +55,19 @@ While developing, it might be helpful to automatically rerun the script when app
 streamlit run app.py --server.runOnSave true
 ```
 ---
+## App Structure
+Before we begin, here's some handy information on the chat app structure in the `app` folder.
+
+- `app.py`: Entry point script to start up the streamlit app.
+- `utils/llm.py`: Large language model class which contains function to invoke Amazon Bedrock and query an Amazon Bedrock Knowledge Base
+- `config.json`: Configuration file for the application.
+- `run.sh`: Starts the streamlit app
+- `setup.sh`: Setup the streamlit app in Amazon SageMaker Studio
+- `status.sh`: Check the status of the streamlit app
+- `cleanup.sh`: Cleans up the environment
+- `sample/cost-sample.csv`: A sample cost and usage report
+
+---
 ## Exercises
 
 ### Exercise 1: Write a system prompt that will analyze a cost and usage
