@@ -12,60 +12,40 @@ def extract_between_tags(tag: str, string: str, strip: bool = False) -> list[str
 
 
 # Add title on the page
-st.title("Generative AI Application")
+st.title("Gen AI Cost Optimisation App")
 
-# Ask user for input text
-# input_sent = 
-# input_sent = st.text_input("Input Sentence", "Identify at least 3 areas where cost savings can be achieved and explain your reasoning. ")
+json_config_file = open('config-test.json')
+configs = json.load(json_config_file)
 
 # Create the large language model object
-llm = Llm()
+llm = Llm(configs)
 
 system_prompt = f'''
-You will be analyzing an AWS (Amazon Web Services) cost and usage report to answer questions in the <question> tag.
+        You will be analyzing an AWS (Amazon Web Services) cost and usage report to answer questions in the <question> tag.
 
-An AWS cost and usage report is a detailed record of your AWS usage and associated costs. It
-contains information such as the AWS service used, the resource type, the usage quantity, and the
-cost incurred. This report can help you understand your AWS spending patterns and identify
-opportunities to reduce costs.
+        An AWS cost and usage report is a detailed record of your AWS usage and associated costs. It
+        contains information such as the AWS service used, the resource type, the usage quantity, and the
+        cost incurred. This report can help you understand your AWS spending patterns and identify
+        opportunities to reduce costs.
 
-Here are the steps you should follow:
+        Here are the steps you should follow:
 
-1. Carefully review the provided AWS cost and usage report in the <AWS_cost_usage_report> tag in csv format. Familiarize yourself with
-the data structure and the different fields present in the report.
+        1. Carefully review the provided AWS cost and usage report in the <AWS_cost_usage_report> tag in csv format. Familiarize yourself with
+        the data structure and the different fields present in the report.
+        2. For each row, carefully consider the properties for each resource. For example the usage type and whether the resource has a reserved instance plan.
+        3. When thinking about what cost optimisation techniques to use, use the information from <policies> tag if applicable.
+        4. Only apply the policy if it matches a relevant resources in the cost and usage report.
+        5. When generating the recommendation, apply any policies that may influence the guidance generated. 
+        6. Only use the data from the <AWS_cost_usage_report> and <policies> tags and think step by step in a <thinking> tag.
+        7. Return the answer in an <answers> tag.
+        8. Only return the <thinking> and <answers>.
+        '''
 
-2. For each row, carefully consider the properties for each resource. For example the usage type and whether the resource has a reserved instance plan.
-
-3. Only use the data from the <AWS_cost_usage_report> and think step by step in a <thinking> tag to answer the question.
-
-4. Return the answer in an <answers> tag.
-
-5. Only return the <thinking> and <answers>.
-
-<answers example>
-<answers>
-There were 3 EC2 instances that have reserved instances plan applied to it. This instances are XXX, YYY, ZZZ.
-<answers>
-</answers example>
-'''
 llm.set_system_prompt(system_prompt)
 
 # Set initial context
 if "inital_context_set" not in st.session_state:
     st.session_state.inital_context_set = True
-
-# # When there is an input text to process
-# if input_sent:
-#     # Invoke the Bedrock foundation model
-#     output = llm.invoke(input_sent, inital_context_set)
-    
-#     print(f"Output: {output}")
-
-#     # Write response on Streamlit web interface
-#     st.write(output)
-    
-#     inital_context_set = True
-    
 
 # Initialize chat history
 if "messages" not in st.session_state:
@@ -83,7 +63,21 @@ for message in st.session_state.messages:
             else:
                 st.markdown(message["content"][0]["text"])
         else:
-            st.markdown(message["content"][0]["text"])
+            # Check if can extract answer
+            text = extract_between_tags('answers', message["content"][0]["text"])
+
+            if len(text) > 0:
+                st.markdown(text[0])
+                # Check if can extract thinking text
+                thinking_text = extract_between_tags('thinking', message["content"][0]["text"])
+                
+                if len(thinking_text) > 0:
+                    st.divider()
+                    st.subheader("Reasoning")
+                    st.markdown(thinking_text[0])
+                
+            else:
+                st.markdown(message["content"][0]["text"])
 
 # Accept user input
 if prompt := st.chat_input("What is up?"):
@@ -91,23 +85,24 @@ if prompt := st.chat_input("What is up?"):
     with st.chat_message("user"):
         st.markdown(prompt)
     
-    print(f'message len before: {len(st.session_state.messages)}')
-
     input_message, output_message, output = llm.invoke(prompt, st.session_state.messages, st.session_state.inital_context_set)
-    # Add user message to chat history
-    print("Set input message")
-    print(f'Message len before append input: {len(st.session_state.messages)}')
-    print(st.session_state.messages)
-    # st.session_state.messages.append(input_message)
-    print(f'Message len after input: {len(st.session_state.messages)}')
-    # print(f'output: {output}')
     st.session_state.inital_context_set = False
-    print("Session state")
-    # print(st.session_state)
     
     with st.chat_message("assistant"):
-        st.write(output)
-    print("Set output message")
+        # Check if can extract answer
+        text = extract_between_tags('answers', output)
+
+        if len(text) > 0:
+            st.markdown(text[0])
+            # Check if can extract thinking text
+            thinking_text = extract_between_tags('thinking', output)
+
+            if len(thinking_text) > 0:
+                # Return the thinking text
+                st.divider()
+                st.subheader("Reasoning")
+                st.markdown(thinking_text[0])
+
+        else:
+            st.markdown(output)
     st.session_state.messages.append(output_message)
-    
-    print(f'Message len after output: {len(st.session_state.messages)}')
