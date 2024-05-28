@@ -5,9 +5,9 @@ As a practical example, we will be iterating over a pre-built chatbot app to ana
 
 ## Workshop Content
 The workshop will consist of 3 exercises:
-1. Exercise 1: Write a prompt to analyze a cost and usage report and provide some cost optimisation recommendations.
-2. Exercise 2: Extend the chatbot to utilise Amazon Befrock Knowledge Base to enhance the cost optimisation recommendations.
-3. Exercise 3: Open book challenge - Improve the cost optimisation recommendation. Fine tune the prompts, chain prompts or add new data sources, let's see if you can improve the cost optimisation recommendations.
+- Exercise 1: Write a prompt to analyze a cost and usage report and provide some cost optimisation recommendations.
+- Exercise 2: Extend the chatbot to utilise Amazon Befrock Knowledge Base to enhance the cost optimisation recommendations.
+- Exercise 3: Open book challenge - Improve the cost optimisation recommendation. Fine tune the prompts, chain prompts or add new data sources, let's see if you can improve the cost optimisation recommendations.
 
 ---
 
