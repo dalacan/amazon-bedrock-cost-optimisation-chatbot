@@ -51,7 +51,7 @@ You can also optionally ask the model to provide it's thought process by saving 
 
 Once you have updated it, refresh your strealit app and test it.
 
-### Exercise 2: Update your app to retrieve information from a knowledge base to enhance your cost optimisation recommendation
+### Exercise 2: Update your chat app to utilise an Amazon Bedrock knowledge base to enhance your cost optimisation recommendation
     
 In this exercise, you will be:
 
@@ -80,7 +80,7 @@ To get started, first review the `utils/llm.py` to `get_policies` function to un
 
 Once you have updated it, refresh your strealit app and test it.
 
-### Exercise 3: Open book
+### Exercise 3: Improve the cost optimisation chatbot
 
 Now that you have ran through the basics of implementing a streamlit app with a Amazon Bedrock and a knowledge base, see if you can enhance the chatbot to perform better cost optimisations. Some suggestions to get you started:
 
