@@ -85,7 +85,7 @@ Once you have updated it, refresh your strealit app and test it.
 Now that you have ran through the basics of implementing a streamlit app with a Amazon Bedrock and a knowledge base, see if you can enhance the chatbot to perform better cost optimisations. Some suggestions to get you started:
 
 1. Enhance system prompt or chain multiple prompts to improve the recommendation
-2. Improve how the application reads the cost and usage report (Hint: the current implementation is limited to the first 2000 records due to Claude's context limitation, see if you can improve this with function calling and csv queries - reference: https://github.com/anthropics/anthropic-cookbook/blob/main/tool_use/function_calling.ipynb_
+2. Improve how the application reads the cost and usage report (Hint: the current implementation is limited to the first 2000 records due to Claude's context limitation, see if you can improve this with function calling and csv queries - reference: https://github.com/anthropics/anthropic-cookbook/blob/main/tool_use/function_calling.ipynb)
 3. Enhance the knowledge base with more information (i.e. upload more documents)
 4. Implement tooling to query external data sources to improve context
 
