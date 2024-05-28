@@ -10,12 +10,17 @@ As a practical example, we will be iterating on a pre-built chatbot that perform
 
 ## Getting Started
 
-Before we begin, you will need to setup your Amazon SageMaker studio environment.
+### Step 1: Clone the repository
+1. In Amazon SageMaker Studio, select `File` -> `New` -> `Terminal`
+2. Clone the repository
+```
+git clone https://github.com/aws-samples/amazon-bedrock-workshop.git
+```
 
 ### Step 1: Setup your environment
+Before we begin, you will need to setup your Amazon SageMaker studio environment.
 
-1. In Amazon SageMaker Studio, select `File` -> `New` -> `Terminal`
-2. Navigate to the app folder i.e. 
+1. Navigate to the app folder i.e. 
 ```
 cd amazon-bedrock-cost-optimisation-chatbot/app
 ```
