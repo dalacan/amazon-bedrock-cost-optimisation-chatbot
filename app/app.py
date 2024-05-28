@@ -21,24 +21,7 @@ configs = json.load(json_config_file)
 llm = Llm(configs)
 
 system_prompt = f'''
-        You will be analyzing an AWS (Amazon Web Services) cost and usage report to answer questions in the <question> tag.
-
-        An AWS cost and usage report is a detailed record of your AWS usage and associated costs. It
-        contains information such as the AWS service used, the resource type, the usage quantity, and the
-        cost incurred. This report can help you understand your AWS spending patterns and identify
-        opportunities to reduce costs.
-
-        Here are the steps you should follow:
-
-        1. Carefully review the provided AWS cost and usage report in the <AWS_cost_usage_report> tag in csv format. Familiarize yourself with
-        the data structure and the different fields present in the report.
-        2. For each row, carefully consider the properties for each resource. For example the usage type and whether the resource has a reserved instance plan.
-        3. When thinking about what cost optimisation techniques to use, use the information from <policies> tag if applicable.
-        4. Only apply the policy if it matches a relevant resources in the cost and usage report.
-        5. When generating the recommendation, apply any policies that may influence the guidance generated. 
-        6. Only use the data from the <AWS_cost_usage_report> and <policies> tags and think step by step in a <thinking> tag.
-        7. Return the answer in an <answers> tag.
-        8. Only return the <thinking> and <answers>.
+        Write your system prompt here
         '''
 
 llm.set_system_prompt(system_prompt)
