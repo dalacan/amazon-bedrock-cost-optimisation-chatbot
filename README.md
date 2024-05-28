@@ -55,8 +55,14 @@ While developing, it might be helpful to automatically rerun the script when app
 streamlit run app.py --server.runOnSave true
 ```
 ---
-## App Structure
-Before we begin, here's some handy information on the chat app structure in the `app` folder.
+## Folder Structure
+Before we begin, here's some key information on the files and folders which we will use for the exercise
+
+**Root folder**
+- `Create_knowledge_base.ipynb`: Notebook to create the Amazon Bedrock Knowledge Base for exercise 2
+- `knowledge-base-sample`: Folder that contains same sample documentation which we will load into the knowledge base
+
+**app** folder
 
 - `app.py`: Entry point script to start up the streamlit app.
 - `utils/llm.py`: Large language model class which contains function to invoke Amazon Bedrock and query an Amazon Bedrock Knowledge Base
@@ -103,7 +109,9 @@ In this exercise, you will be:
     
 #### Step 1: Setup knowledge base
     
-In the `amazon-bedrock-cost-optimisation-chatbot` folder, open the notebook `Create_knowledge_base.ipynb` and run through the steps to setup your knowledge base
+In the root folder, open the notebook `Create_knowledge_base.ipynb` and run through the steps to setup your knowledge base.
+
+**Note:** As part of the notebook, we will be loading some sample documentation files from the `knowledge-base-sample` folder. Prior to writing your prompt and using the chatbot, do review the files in this folder as they will help guide you on how to test your prompts.
 
 #### Step 2: Setup your streamlit with the knowledge base feature
 
