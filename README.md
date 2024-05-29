@@ -17,7 +17,7 @@ The workshop will consist of 3 exercises:
 1. In Amazon SageMaker Studio, select `File` -> `New` -> `Terminal`
 2. Clone the repository
 ```
-git clone https://github.com/aws-samples/amazon-bedrock-workshop.git
+git clone https://github.com/dalacan/amazon-bedrock-cost-optimisation-chatbot.git
 ```
 
 ### Step 2: Setup your environment
